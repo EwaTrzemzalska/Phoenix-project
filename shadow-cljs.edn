@@ -1,0 +1,22 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/"
+  "tests/"]
+
+ :dependencies
+ [[reagent "1.1.0"]]
+
+ :dev-http
+ {8020 "public"}
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js"
+        :asset-path "/js"
+        :modules
+        {:main ; becomes public/js/main.js
+         {:init-fn phoenix.starter/init}}}
+  :test {:target :browser-test
+         :test-dir "resources/public/js/test"
+         :devtools {:http-port 8021
+                    :http-root "resources/public/js/test"}}}}
